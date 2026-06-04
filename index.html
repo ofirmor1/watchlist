@@ -102,7 +102,8 @@ function getMktState() {
 }
 
 async function fetchOne(sym) {
-  const yUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=1d&includePrePost=true`;
+  // v7/finance/quote returns preMarketPrice, postMarketPrice directly
+  const yUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${sym}&fields=regularMarketPrice,regularMarketPreviousClose,regularMarketOpen,regularMarketDayHigh,regularMarketDayLow,regularMarketVolume,averageDailyVolume3Month,fiftyTwoWeekHigh,fiftyTwoWeekLow,preMarketPrice,preMarketChange,preMarketChangePercent,postMarketPrice,postMarketChange,postMarketChangePercent`;
   const proxies = [
     `https://api.allorigins.win/raw?url=${encodeURIComponent(yUrl)}`,
     `https://corsproxy.io/?${encodeURIComponent(yUrl)}`,
@@ -113,26 +114,25 @@ async function fetchOne(sym) {
       const r = await fetch(url, {signal: AbortSignal.timeout(9000)});
       if (!r.ok) continue;
       const json = await r.json();
-      const res = json?.chart?.result?.[0];
-      if (!res) continue;
-      const meta = res.meta;
-      const prev = meta.chartPreviousClose || meta.previousClose || meta.regularMarketPreviousClose;
-      const reg = meta.regularMarketPrice;
-      const pre = meta.preMarketPrice || null;
-      const post = meta.postMarketPrice || null;
+      const q = json?.quoteResponse?.result?.[0];
+      if (!q) continue;
+      const prev = q.regularMarketPreviousClose;
+      const reg = q.regularMarketPrice;
+      const pre = q.preMarketPrice || null;
+      const post = q.postMarketPrice || null;
       const regChg = reg - prev;
       const regPct = (regChg / prev) * 100;
-      const preChg = pre ? pre - prev : null;
-      const prePct = pre ? (preChg / prev) * 100 : null;
+      const preChg = pre ? q.preMarketChange || (pre - prev) : null;
+      const prePct = pre ? q.preMarketChangePercent || ((pre - prev) / prev * 100) : null;
       return {
         sym, reg, prev, pre, post, regChg, regPct, preChg, prePct,
-        open: meta.regularMarketOpen,
-        high: meta.regularMarketDayHigh,
-        low: meta.regularMarketDayLow,
-        vol: meta.regularMarketVolume,
-        avgVol: meta.averageDailyVolume3Month,
-        hi52: meta.fiftyTwoWeekHigh,
-        lo52: meta.fiftyTwoWeekLow,
+        open: q.regularMarketOpen,
+        high: q.regularMarketDayHigh,
+        low: q.regularMarketDayLow,
+        vol: q.regularMarketVolume,
+        avgVol: q.averageDailyVolume3Month,
+        hi52: q.fiftyTwoWeekHigh,
+        lo52: q.fiftyTwoWeekLow,
       };
     } catch(e) { continue; }
   }
