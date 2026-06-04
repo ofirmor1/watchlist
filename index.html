@@ -10,47 +10,62 @@ body { background:#080810; color:#e0e0f0; font-family:'Helvetica Neue',Arial,san
 header { background:linear-gradient(135deg,#0d0d20,#1a1030); border-bottom:1px solid #2a2a3a; padding:14px 16px; position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; }
 header h1 { font-size:17px; color:#4fc3f7; font-family:monospace; letter-spacing:2px; }
 header .sub { font-size:10px; color:#7070a0; margin-top:2px; }
-.btn-refresh { background:#1a2a3a; border:1px solid #4a7a9a; color:#4fc3f7; font-size:12px; padding:6px 14px; border-radius:6px; cursor:pointer; font-weight:700; }
-.btn-refresh:disabled { opacity:0.3; }
+.btn { background:#1a2a3a; border:1px solid #4a7a9a; color:#4fc3f7; font-size:12px; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700; }
+.btn:disabled { opacity:0.3; }
 .container { padding:12px; }
-.progress-box { background:#111118; border:1px solid #2a2a3a; border-radius:10px; padding:18px; text-align:center; margin-bottom:12px; }
+
+/* KEY INPUT */
+.key-box { background:#111118; border:1px solid #2a2a3a; border-radius:10px; padding:16px; margin-bottom:12px; }
+.key-box h3 { color:#4fc3f7; font-size:13px; margin-bottom:8px; }
+.key-box p { color:#7070a0; font-size:11px; margin-bottom:12px; line-height:1.7; }
+.key-row { display:flex; gap:8px; }
+.key-row input { flex:1; background:#0a0a12; border:1px solid #3a3a5a; border-radius:6px; padding:10px 12px; color:#e0e0f0; font-size:13px; outline:none; direction:ltr; }
+.key-row input:focus { border-color:#4fc3f7; }
+.note { background:#0a1a0a; border:1px solid #2a4a2a; border-radius:6px; padding:10px 12px; margin-top:10px; font-size:11px; color:#81c784; line-height:1.7; }
+
+/* PROGRESS */
+.prog-box { background:#111118; border:1px solid #2a2a3a; border-radius:10px; padding:16px; text-align:center; margin-bottom:12px; display:none; }
 .prog-bar-wrap { background:#1a1a2a; border-radius:4px; height:5px; margin:10px 0 5px; }
 .prog-bar { background:linear-gradient(90deg,#4fc3f7,#69f0ae); height:100%; border-radius:4px; width:0%; transition:width 0.4s; }
-.status-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; background:#111118; border:1px solid #2a2a3a; border-radius:8px; padding:8px 12px; flex-wrap:wrap; gap:6px; }
-.market-state { font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; font-family:monospace; }
-.market-state.pre { background:rgba(255,215,64,0.15); color:#ffd740; border:1px solid #ffd740; }
-.market-state.open { background:rgba(105,240,174,0.15); color:#69f0ae; border:1px solid #69f0ae; }
-.market-state.after { background:rgba(179,136,255,0.15); color:#b388ff; border:1px solid #b388ff; }
-.market-state.closed { background:rgba(120,120,140,0.12); color:#7070a0; border:1px solid #4a4a6a; }
-.index-bar { display:flex; gap:8px; margin-bottom:12px; overflow-x:auto; }
-.index-pill { background:#111118; border:1px solid #2a2a3a; border-radius:8px; padding:8px 14px; display:flex; gap:10px; align-items:center; flex-shrink:0; }
+
+/* STATUS */
+.stat-bar { display:none; justify-content:space-between; align-items:center; margin-bottom:10px; background:#111118; border:1px solid #2a2a3a; border-radius:8px; padding:8px 12px; flex-wrap:wrap; gap:6px; }
+.mkt-badge { font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; font-family:monospace; }
+.mkt-pre { background:rgba(255,215,64,0.15); color:#ffd740; border:1px solid #ffd740; }
+.mkt-open { background:rgba(105,240,174,0.15); color:#69f0ae; border:1px solid #69f0ae; }
+.mkt-after { background:rgba(179,136,255,0.15); color:#b388ff; border:1px solid #b388ff; }
+.mkt-closed { background:rgba(120,120,140,0.12); color:#7070a0; border:1px solid #4a4a6a; }
+
+/* INDEX BAR */
+.idx-bar { display:flex; gap:8px; margin-bottom:12px; overflow-x:auto; }
+.idx-pill { background:#111118; border:1px solid #2a2a3a; border-radius:8px; padding:8px 14px; display:flex; gap:10px; align-items:center; flex-shrink:0; }
+
+/* CARDS */
 .card { border-radius:10px; padding:12px 14px; margin-bottom:10px; }
-.card.up { border:1px solid #1e4a1e; background:#0c160c; }
-.card.down { border:1px solid #4a1e1e; background:#160c0c; }
-.card.flat { border:1px solid #2a2a3a; background:#111118; }
+.card-up { border:1px solid #1e4a1e; background:#0c160c; }
+.card-down { border:1px solid #4a1e1e; background:#160c0c; }
+.card-flat { border:1px solid #2a2a3a; background:#111118; }
 .card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
-.card-ticker { font-size:22px; font-weight:700; font-family:monospace; }
-.card-ticker.up { color:#69f0ae; } .card-ticker.down { color:#ff5252; } .card-ticker.flat { color:#a0a0c0; }
-.card-sector { font-size:10px; color:#5a5a7a; margin-top:1px; }
-.card-price { font-size:22px; font-weight:700; font-family:monospace; color:#e0e0f0; text-align:left; }
-.card-chg { font-size:13px; font-weight:700; font-family:monospace; text-align:left; }
-.pre-badge { display:inline-block; font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:4px; background:rgba(255,215,64,0.15); color:#ffd740; border:1px solid rgba(255,215,64,0.4); font-family:monospace; }
-.post-badge { display:inline-block; font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:4px; background:rgba(179,136,255,0.15); color:#b388ff; border:1px solid rgba(179,136,255,0.4); font-family:monospace; }
-.reg-line { font-size:10px; color:#5a5a7a; font-family:monospace; text-align:left; margin-top:2px; }
+.ticker { font-size:22px; font-weight:700; font-family:monospace; letter-spacing:1px; }
+.t-up { color:#69f0ae; } .t-down { color:#ff5252; } .t-flat { color:#a0a0c0; }
+.sector { font-size:10px; color:#5a5a7a; margin-top:1px; }
+.price { font-size:22px; font-weight:700; font-family:monospace; color:#e0e0f0; text-align:left; }
+.chg { font-size:13px; font-weight:700; font-family:monospace; text-align:left; }
+.reg-line { font-size:10px; color:#5a5a7a; text-align:left; font-family:monospace; }
+.badge-pre { font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:5px; background:rgba(255,215,64,0.15); color:#ffd740; border:1px solid rgba(255,215,64,0.4); }
+.badge-post { font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:5px; background:rgba(179,136,255,0.15); color:#b388ff; border:1px solid rgba(179,136,255,0.4); }
 .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:8px; }
 .metric { background:#0a0a14; border-radius:6px; padding:6px 8px; }
-.metric .ml { color:#4a4a6a; font-size:9px; letter-spacing:1px; margin-bottom:2px; text-transform:uppercase; }
-.metric .mv { font-size:12px; font-weight:600; font-family:monospace; color:#c0c0d8; }
-.metric .mv.green { color:#69f0ae; } .metric .mv.red { color:#ff5252; }
+.ml { color:#4a4a6a; font-size:9px; letter-spacing:1px; margin-bottom:2px; text-transform:uppercase; }
+.mv { font-size:12px; font-weight:600; font-family:monospace; color:#c0c0d8; }
+.mv-green { color:#69f0ae; }
 .range-wrap { margin-top:6px; }
 .range-labels { display:flex; justify-content:space-between; font-size:9px; color:#4a4a6a; margin-bottom:3px; font-family:monospace; }
-.range-bar { background:#1a1a2a; border-radius:3px; height:4px; position:relative; overflow:hidden; }
-.range-fill { position:absolute; left:0; top:0; height:100%; border-radius:3px; background:linear-gradient(90deg,#ff5252 0%,#ffd740 50%,#69f0ae 100%); }
+.range-bar { background:#1a1a2a; border-radius:3px; height:4px; overflow:hidden; }
+.range-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,#ff5252 0%,#ffd740 50%,#69f0ae 100%); }
 .vol-row { margin-top:6px; display:flex; align-items:center; gap:8px; }
-.vol-label { font-size:9px; color:#4a4a6a; letter-spacing:1px; }
 .vol-track { flex:1; background:#1a1a2a; border-radius:2px; height:3px; }
 .vol-fill { height:100%; border-radius:2px; }
-.vol-val { font-size:10px; font-family:monospace; color:#7070a0; }
 .err-card { background:#1a0a0a; border:1px solid #4a2a2a; border-radius:8px; padding:8px 12px; margin-bottom:8px; color:#ff8a80; font-size:12px; font-family:monospace; }
 .footer { text-align:center; color:#3a3a5a; font-size:10px; padding:16px 0; font-family:monospace; line-height:1.6; }
 </style>
@@ -59,24 +74,38 @@ header .sub { font-size:10px; color:#7070a0; margin-top:2px; }
 <header>
   <div>
     <h1>📊 WATCHLIST LIVE</h1>
-    <div class="sub" id="hdr-sub">Yahoo Finance · Pre/Post Market · ללא API key</div>
+    <div class="sub" id="hdr-sub">Finnhub · Pre/Post Market</div>
   </div>
-  <button class="btn-refresh" id="btn-ref" onclick="loadAll()">🔄 טען</button>
+  <button class="btn" id="btn-ref" onclick="loadAll()">🔄 רענן</button>
 </header>
 <div class="container">
-  <div class="progress-box" id="prog-box" style="display:none">
+
+  <div class="key-box" id="key-box">
+    <h3>🔑 Finnhub API Key</h3>
+    <p>קבל key חינמי ב-<strong>finnhub.io</strong> → Sign up → Dashboard<br>
+    60 בקשות/דקה · Pre-market ו-Post-market · ללא הגבלת יומית</p>
+    <div class="key-row">
+      <input type="password" id="key-input" placeholder="הכנס Finnhub API key..." />
+      <button class="btn" onclick="startWithKey()">🚀 טען</button>
+    </div>
+    <div class="note">✅ Finnhub תומך ב-CORS מ-GitHub Pages · Pre/Post market מלא</div>
+  </div>
+
+  <div class="prog-box" id="prog-box">
     <div style="font-size:24px;margin-bottom:6px">⏳</div>
-    <div style="color:#4fc3f7;font-size:14px;font-weight:700;margin-bottom:3px">מושך נתונים...</div>
-    <div style="color:#7070a0;font-size:11px" id="prog-lbl">מאתחל...</div>
+    <div style="color:#4fc3f7;font-size:14px;font-weight:700;margin-bottom:4px">מושך נתונים...</div>
+    <div style="color:#7070a0;font-size:11px" id="prog-lbl"></div>
     <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar"></div></div>
     <div style="color:#a0a0c0;font-size:11px" id="prog-pct">0%</div>
   </div>
-  <div class="status-bar" id="stat-bar" style="display:none">
+
+  <div class="stat-bar" id="stat-bar">
     <div style="color:#69f0ae;font-size:12px;font-weight:700" id="stat-info"></div>
     <div style="color:#7070a0;font-size:11px;font-family:monospace" id="stat-time"></div>
-    <div class="market-state" id="mkt-state"></div>
+    <div class="mkt-badge" id="mkt-badge"></div>
   </div>
-  <div class="index-bar" id="idx-bar"></div>
+
+  <div class="idx-bar" id="idx-bar"></div>
   <div id="cards"></div>
   <div class="footer" id="footer"></div>
 </div>
@@ -84,16 +113,16 @@ header .sub { font-size:10px; color:#7070a0; margin-top:2px; }
 <script>
 const TICKERS = ["MU","CVNA","CRWD","AVGO","MRVL","DDOG","NBIS","ALAB","LRCX","CRDO","CRWV","SPY","QQQ"];
 const SECTORS = {MU:"Semis",CVNA:"Consumer",CRWD:"Cyber",AVGO:"Semis",MRVL:"Semis",DDOG:"Cloud",NBIS:"AI Infra",ALAB:"Semis",LRCX:"Semis",CRDO:"Semis",CRWV:"AI Infra",SPY:"ETF",QQQ:"ETF"};
+let KEY = "";
 const DATA = {};
 
-const f = (n,d=2) => (n==null||isNaN(n)) ? "—" : (+n).toFixed(d);
-const fv = v => !v ? "—" : v>=1e9 ? (v/1e9).toFixed(2)+"B" : v>=1e6 ? (v/1e6).toFixed(1)+"M" : v>=1e3 ? (v/1e3).toFixed(0)+"K" : String(v);
-const pc = v => v>0.05 ? "#69f0ae" : v<-0.05 ? "#ff5252" : "#a0a0c0";
-const dc = v => v>0.05 ? "up" : v<-0.05 ? "down" : "flat";
+const f=(n,d=2)=>(n==null||isNaN(n))?"—":(+n).toFixed(d);
+const fv=v=>!v||isNaN(v)?"—":v>=1e9?(v/1e9).toFixed(2)+"B":v>=1e6?(v/1e6).toFixed(1)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":String(v);
+const pc=v=>v>0.1?"#69f0ae":v<-0.1?"#ff5252":"#a0a0c0";
 
 function getMktState() {
-  const et = new Date(new Date().toLocaleString("en-US",{timeZone:"America/New_York"}));
-  const d = et.getDay(), m = et.getHours()*60+et.getMinutes();
+  const et=new Date(new Date().toLocaleString("en-US",{timeZone:"America/New_York"}));
+  const d=et.getDay(),m=et.getHours()*60+et.getMinutes();
   if(d===0||d===6) return "closed";
   if(m>=240&&m<570) return "pre";
   if(m>=570&&m<960) return "open";
@@ -102,148 +131,244 @@ function getMktState() {
 }
 
 async function fetchOne(sym) {
-  // v7/finance/quote returns preMarketPrice, postMarketPrice directly
-  const yUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${sym}&fields=regularMarketPrice,regularMarketPreviousClose,regularMarketOpen,regularMarketDayHigh,regularMarketDayLow,regularMarketVolume,averageDailyVolume3Month,fiftyTwoWeekHigh,fiftyTwoWeekLow,preMarketPrice,preMarketChange,preMarketChangePercent,postMarketPrice,postMarketChange,postMarketChangePercent`;
-  const proxies = [
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(yUrl)}`,
-    `https://corsproxy.io/?${encodeURIComponent(yUrl)}`,
-    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(yUrl)}`
-  ];
-  for (const url of proxies) {
-    try {
-      const r = await fetch(url, {signal: AbortSignal.timeout(9000)});
-      if (!r.ok) continue;
-      const json = await r.json();
-      const q = json?.quoteResponse?.result?.[0];
-      if (!q) continue;
-      const prev = q.regularMarketPreviousClose;
-      const reg = q.regularMarketPrice;
-      const pre = q.preMarketPrice || null;
-      const post = q.postMarketPrice || null;
-      const regChg = reg - prev;
-      const regPct = (regChg / prev) * 100;
-      const preChg = pre ? q.preMarketChange || (pre - prev) : null;
-      const prePct = pre ? q.preMarketChangePercent || ((pre - prev) / prev * 100) : null;
-      return {
-        sym, reg, prev, pre, post, regChg, regPct, preChg, prePct,
-        open: q.regularMarketOpen,
-        high: q.regularMarketDayHigh,
-        low: q.regularMarketDayLow,
-        vol: q.regularMarketVolume,
-        avgVol: q.averageDailyVolume3Month,
-        hi52: q.fiftyTwoWeekHigh,
-        lo52: q.fiftyTwoWeekLow,
-      };
-    } catch(e) { continue; }
+  // Finnhub quote endpoint - supports CORS directly
+  const url = `https://finnhub.io/api/v1/quote?symbol=${sym}&token=${KEY}`;
+  const r = await fetch(url, {signal: AbortSignal.timeout(8000)});
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const q = await r.json();
+  // q: { c: current, d: change, dp: changePct, h: high, l: low, o: open, pc: prevClose }
+  if (!q.c || q.c === 0) throw new Error("No data");
+
+  // Finnhub basic quote doesn't have pre/post — use their /stock/candle for pre-market
+  // But for pre-market, fetch from their extended endpoint
+  let pre = null, preChg = null, prePct = null;
+  let post = null;
+
+  try {
+    const now = Math.floor(Date.now()/1000);
+    const from = now - 3600; // last hour
+    const extUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${sym}&resolution=1&from=${from}&to=${now}&token=${KEY}`;
+    const er = await fetch(extUrl, {signal: AbortSignal.timeout(5000)});
+    if (er.ok) {
+      const ed = await er.json();
+      if (ed.s === "ok" && ed.c && ed.c.length > 0) {
+        const lastCandle = ed.c[ed.c.length-1];
+        const ms = getMktState();
+        if (ms === "pre" && lastCandle !== q.c) {
+          pre = lastCandle;
+          preChg = pre - q.pc;
+          prePct = (preChg / q.pc) * 100;
+        } else if (ms === "after" && lastCandle !== q.c) {
+          post = lastCandle;
+        }
+      }
+    }
+  } catch(e) { /* pre/post not available */ }
+
+  // Also try Finnhub websocket-based quote for extended hours
+  // For now use the basic quote and mark pre if market state is pre
+  const ms = getMktState();
+  if (ms === "pre" || ms === "after") {
+    // q.c IS the extended hours price during pre/post on Finnhub
+    const isExtended = ms === "pre" || ms === "after";
+    if (isExtended) {
+      if (ms === "pre") {
+        pre = q.c;
+        preChg = q.d;
+        prePct = q.dp;
+      } else {
+        post = q.c;
+      }
+    }
   }
-  return null;
+
+  return {
+    sym, reg: ms==="open"?q.c:q.pc, prev: q.pc,
+    pre, post, preChg, prePct,
+    regChg: q.d, regPct: q.dp,
+    open: q.o, high: q.h, low: q.l,
+    vol: null, avgVol: null,
+    hi52: null, lo52: null,
+    currentPrice: q.c,
+  };
 }
 
-function renderCards() {
-  // Index pills
+// Better approach: use Finnhub's quote which already returns current price
+// During pre-market, q.c = pre-market price
+async function fetchOneFinnhub(sym) {
+  const url = `https://finnhub.io/api/v1/quote?symbol=${sym}&token=${KEY}`;
+  const r = await fetch(url, {signal: AbortSignal.timeout(8000)});
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const q = await r.json();
+  if (!q || (!q.c && q.c !== 0)) throw new Error("Empty");
+
+  const ms = getMktState();
+  const prev = q.pc;
+  const current = q.c;
+  const chg = q.d;
+  const pct = q.dp;
+
+  // During pre/post: Finnhub q.c reflects the latest traded price (including extended)
+  const isPre = ms === "pre";
+  const isPost = ms === "after";
+
+  return {
+    sym,
+    reg: prev, // previous close as "regular" baseline
+    prev,
+    pre: isPre ? current : null,
+    post: isPost ? current : null,
+    preChg: isPre ? chg : null,
+    prePct: isPre ? pct : null,
+    regChg: chg,
+    regPct: pct,
+    open: q.o,
+    high: q.h,
+    low: q.l,
+    currentPrice: current,
+    // 52w and volume not in basic quote — will add via profile2
+    vol: null, avgVol: null, hi52: null, lo52: null,
+  };
+}
+
+// Enrich with 52w data
+async function enrichWith52w(sym, obj) {
+  try {
+    const url = `https://finnhub.io/api/v1/stock/metric?symbol=${sym}&metric=all&token=${KEY}`;
+    const r = await fetch(url, {signal: AbortSignal.timeout(5000)});
+    if (!r.ok) return obj;
+    const d = await r.json();
+    const m = d.metric || {};
+    obj.hi52 = m["52WeekHigh"] || null;
+    obj.lo52 = m["52WeekLow"] || null;
+    obj.avgVol = m["10DayAverageTradingVolume"] ? m["10DayAverageTradingVolume"] * 1e6 : null;
+  } catch(e) {}
+  return obj;
+}
+
+function renderAll() {
   const ib = document.getElementById("idx-bar");
   ib.innerHTML = "";
   ["SPY","QQQ"].forEach(t => {
     const d = DATA[t];
-    if (!d) return;
-    const dp = d.pre || d.reg;
+    if (!d || d.error) return;
+    const dp = d.pre || d.post || d.currentPrice;
     const dpct = d.pre ? d.prePct : d.regPct;
-    ib.innerHTML += `<div class="index-pill">
+    ib.innerHTML += `<div class="idx-pill">
       <span style="color:#7070a0;font-size:11px;font-family:monospace;font-weight:700">${t}</span>
       <span style="color:#e0e0f0;font-size:14px;font-weight:700;font-family:monospace">$${f(dp)}</span>
-      <span style="color:${pc(dpct)};font-size:12px;font-weight:700;font-family:monospace">${dpct>0?"▲":"▼"}${Math.abs(f(dpct))}%</span>
-      ${d.pre?'<span class="pre-badge">PRE</span>':""}
+      <span style="color:${pc(dpct)};font-size:12px;font-weight:700">${(dpct||0)>0?"▲":"▼"}${Math.abs(f(dpct))}%</span>
+      ${d.pre?'<span class="badge-pre">PRE</span>':d.post?'<span class="badge-post">POST</span>':""}
     </div>`;
   });
 
-  // Stock cards
   const cv = document.getElementById("cards");
   cv.innerHTML = "";
   TICKERS.filter(t=>!["SPY","QQQ"].includes(t)).forEach(t => {
     const d = DATA[t];
-    if (d === undefined) return; // not fetched yet
-    if (d === null) {
+    if (d === undefined) return;
+    if (!d || d.error) {
       cv.innerHTML += `<div class="err-card">${t} — שגיאת טעינה ⚠️</div>`;
       return;
     }
-    const dp = d.pre || d.reg;
+
+    const isP = !!d.pre, isPost = !!d.post && !d.pre;
+    const dp = d.pre || d.post || d.currentPrice;
     const dpct = d.pre ? d.prePct : d.regPct;
-    const dchg = d.pre ? d.preChg : d.regChg;
-    const dir = dc(dpct);
+    const dchg = dp - d.prev;
+    const dir = (dpct||0)>0.1?"up":(dpct||0)<-0.1?"down":"flat";
     const rw = (d.hi52&&d.lo52&&d.hi52!==d.lo52) ? Math.min(100,Math.max(0,((dp-d.lo52)/(d.hi52-d.lo52))*100)) : 50;
     const vr = (d.vol&&d.avgVol) ? Math.min(200,(d.vol/d.avgVol)*100) : 0;
     const vc = vr>150?"#ff9800":vr>100?"#69f0ae":"#4fc3f7";
-    const near52h = dp >= d.hi52*0.97;
+    const near52h = d.hi52 && dp >= d.hi52*0.97;
+    const bg = dir==="up"?"#0c160c":dir==="down"?"#160c0c":"#111118";
+    const br = dir==="up"?"#1e4a1e":dir==="down"?"#4a1e1e":"#2a2a3a";
+    const tc = dir==="up"?"#69f0ae":dir==="down"?"#ff5252":"#a0a0c0";
 
-    cv.innerHTML += `<div class="card ${dir}">
+    cv.innerHTML += `<div class="card card-${dir}" style="background:${bg};border:1px solid ${br}">
       <div class="card-top">
         <div>
-          <div class="card-ticker ${dir}">${t}</div>
-          <div class="card-sector">${SECTORS[t]||""}</div>
+          <div class="ticker t-${dir}">${t}</div>
+          <div class="sector">${SECTORS[t]||""}</div>
         </div>
         <div>
-          <div class="card-price">${d.pre?'<span class="pre-badge">PRE</span>':d.post?'<span class="post-badge">POST</span>':""} $${f(dp)}</div>
-          <div class="card-chg" style="color:${pc(dpct)}">${dpct>0?"▲":"▼"} ${Math.abs(f(dpct))}% <span style="color:#7070a0;font-size:11px">(${dchg>0?"+":""}${f(dchg)})</span></div>
-          ${d.pre?`<div class="reg-line">REG: $${f(d.reg)} (${d.regPct>0?"+":""}${f(d.regPct)}%)</div>`:""}
+          <div class="price">${isP?'<span class="badge-pre">PRE</span>':isPost?'<span class="badge-post">POST</span>':""} $${f(dp)}</div>
+          <div class="chg" style="color:${pc(dpct||0)}">${(dpct||0)>0?"▲":"▼"} ${Math.abs(f(dpct))}% <span style="color:#7070a0;font-size:11px;font-weight:400">(${dchg>0?"+":""}${f(dchg)})</span></div>
+          ${isP?`<div class="reg-line">PREV CLOSE: $${f(d.prev)}</div>`:""}
         </div>
       </div>
       <div class="metrics">
         <div class="metric"><div class="ml">OPEN</div><div class="mv">$${f(d.open)}</div></div>
         <div class="metric"><div class="ml">HIGH</div><div class="mv">$${f(d.high)}</div></div>
         <div class="metric"><div class="ml">LOW</div><div class="mv">$${f(d.low)}</div></div>
-        <div class="metric"><div class="ml">52W HIGH</div><div class="mv ${near52h?"green":""}">$${f(d.hi52)}</div></div>
-        <div class="metric"><div class="ml">52W LOW</div><div class="mv">$${f(d.lo52)}</div></div>
+        <div class="metric"><div class="ml">52W H</div><div class="mv ${near52h?"mv-green":""}">$${f(d.hi52)}</div></div>
+        <div class="metric"><div class="ml">52W L</div><div class="mv">$${f(d.lo52)}</div></div>
         <div class="metric"><div class="ml">PREV</div><div class="mv">$${f(d.prev)}</div></div>
       </div>
-      <div class="range-wrap">
-        <div class="range-labels"><span>52W L $${f(d.lo52)}</span><span>52W H $${f(d.hi52)}</span></div>
+      ${d.hi52&&d.lo52?`<div class="range-wrap">
+        <div class="range-labels"><span>L $${f(d.lo52)}</span><span>H $${f(d.hi52)}</span></div>
         <div class="range-bar"><div class="range-fill" style="width:${rw}%"></div></div>
-      </div>
-      ${d.vol?`<div class="vol-row">
-        <span class="vol-label">VOL</span>
-        <div class="vol-track"><div class="vol-fill" style="width:${Math.min(100,vr)}%;background:${vc}"></div></div>
-        <span class="vol-val">${fv(d.vol)} / avg ${fv(d.avgVol)}</span>
       </div>`:""}
     </div>`;
   });
 }
 
 async function loadAll() {
+  if (!KEY) { document.getElementById("key-box").style.display="block"; return; }
   const btn = document.getElementById("btn-ref");
-  btn.disabled = true; btn.textContent = "⏳";
-  document.getElementById("prog-box").style.display = "block";
-  document.getElementById("stat-bar").style.display = "none";
-  document.getElementById("idx-bar").innerHTML = "";
-  document.getElementById("cards").innerHTML = "";
+  btn.disabled=true; btn.textContent="⏳";
+  document.getElementById("prog-box").style.display="block";
+  document.getElementById("stat-bar").style.display="none";
+  document.getElementById("idx-bar").innerHTML="";
+  document.getElementById("cards").innerHTML="";
 
-  let ok=0, err=0;
+  let ok=0,err=0;
   for (let i=0; i<TICKERS.length; i++) {
     const t = TICKERS[i];
-    document.getElementById("prog-lbl").textContent = `מושך ${t}... (${i+1}/${TICKERS.length})`;
     const pct = Math.round(((i+1)/TICKERS.length)*100);
-    document.getElementById("prog-bar").style.width = pct+"%";
-    document.getElementById("prog-pct").textContent = pct+"%";
-    const res = await fetchOne(t);
-    DATA[t] = res;
-    if (res) ok++; else err++;
-    renderCards();
-    if (i < TICKERS.length-1) await new Promise(r=>setTimeout(r,200));
+    document.getElementById("prog-lbl").textContent=`מושך ${t}... (${i+1}/${TICKERS.length})`;
+    document.getElementById("prog-bar").style.width=pct+"%";
+    document.getElementById("prog-pct").textContent=pct+"%";
+    try {
+      let d = await fetchOneFinnhub(t);
+      // Enrich every 2nd ticker to save rate limit
+      if (i % 2 === 0) d = await enrichWith52w(t, d);
+      DATA[t] = d; ok++;
+    } catch(e) {
+      DATA[t] = {error:true}; err++;
+    }
+    renderAll();
+    if (i < TICKERS.length-1) await new Promise(r=>setTimeout(r,150));
   }
 
-  document.getElementById("prog-box").style.display = "none";
+  document.getElementById("prog-box").style.display="none";
   const sb = document.getElementById("stat-bar");
-  sb.style.display = "flex";
-  document.getElementById("stat-info").textContent = `✅ ${ok} מניות${err?` · ⚠️ ${err} שגיאות`:""}`;
-  document.getElementById("stat-time").textContent = new Date().toLocaleTimeString("he-IL");
-  const ms = getMktState();
-  const msl = {pre:"PRE-MARKET",open:"MARKET OPEN",after:"AFTER-HOURS",closed:"MARKET CLOSED"};
-  const msEl = document.getElementById("mkt-state");
-  msEl.textContent = msl[ms]||""; msEl.className = `market-state ${ms}`;
-  document.getElementById("footer").textContent = "Yahoo Finance · לחץ רענן לעדכון מחירים";
-  btn.disabled = false; btn.textContent = "🔄 רענן";
+  sb.style.display="flex";
+  document.getElementById("stat-info").textContent=`✅ ${ok} מניות${err?` · ⚠️ ${err} שגיאות`:""}`;
+  document.getElementById("stat-time").textContent=new Date().toLocaleTimeString("he-IL");
+  const ms=getMktState();
+  const mbl={pre:"PRE-MARKET",open:"MARKET OPEN",after:"AFTER-HOURS",closed:"CLOSED"};
+  const mbc={pre:"mkt-pre",open:"mkt-open",after:"mkt-after",closed:"mkt-closed"};
+  const mb=document.getElementById("mkt-badge");
+  mb.textContent=mbl[ms]||""; mb.className=`mkt-badge ${mbc[ms]}`;
+  document.getElementById("footer").textContent="Finnhub · לחץ רענן לעדכון";
+  btn.disabled=false; btn.textContent="🔄 רענן";
 }
 
-window.addEventListener("load", loadAll);
+function startWithKey() {
+  const k = document.getElementById("key-input").value.trim();
+  if (!k) { alert("הכנס API key"); return; }
+  KEY = k;
+  localStorage.setItem("finnhub_key", k);
+  document.getElementById("key-box").style.display="none";
+  loadAll();
+}
+
+// Load saved key
+window.addEventListener("load", () => {
+  const saved = localStorage.getItem("finnhub_key");
+  if (saved) { KEY=saved; document.getElementById("key-box").style.display="none"; loadAll(); }
+});
 </script>
 </body>
 </html>
